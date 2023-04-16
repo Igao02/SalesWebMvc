@@ -16,11 +16,16 @@ namespace SalesWebMVC.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Message"] = "Projeto Sales Web MVC App from C#";
+            ViewData["Message"] = "Projeto Sales Web MVC App from C#asfdsf";
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult teste()
         {
             return View();
         }
