@@ -16,8 +16,9 @@ namespace SalesWebMVC.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Message"] = "Projeto Sales Web MVC App from C#asfdsf";
+            ViewData["Message"] = "Projeto Sales Web MVC App from C#";
             return View();
+            //Colocando uma mensagem na página Index.
         }
 
         public IActionResult Privacy()
