@@ -9,8 +9,8 @@ namespace SalesWebMVC.Models
     {
         //Criação da Nova Classe "Departamentos"
 
-
         public int Id { get; set; }
+        
         public string Name { get; set; }
         public ICollection <Seller> Sellers { get; set; } = new List<Seller>();
         //Essa ultima linha, está realizando a associação do Department com o Seller, onde no diagrama está Department 1 para Sellers * (1...*)
@@ -23,9 +23,9 @@ namespace SalesWebMVC.Models
         }
 
         //Criando o construtor com argumentos
-        public Department(int id, string name)
+        public Department(string name)
         {
-            Id = id;
+            
             Name = name;
         }
 
