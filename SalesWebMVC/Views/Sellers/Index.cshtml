@@ -1,7 +1,71 @@
-﻿
+﻿<!--Corresponde ao objeto list na classe SellersController-->
+@model IEnumerable<SalesWebMVC.Models.Seller>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sellers";
 }
 
-<h1>Sellers</h1>
+<h2>@ViewData["Title"]</h2>
 
+<!--Criando um Layout básico para mostrar a listagem de vendedores-->
+
+<head>
+    <!--Referencia para pegar a cor que está no arquivo abaixo-->
+    <link href="~/css/SellersIndex.css" rel="stylesheet">
+</head>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+            <!--Essa classe permite que possamos mudar a cor da barra de titulos -->
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.BaseSalary)
+            </th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <!-- adiciona a classe success na primeira coluna da linha de corpo -->
+                @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaseSalary)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
