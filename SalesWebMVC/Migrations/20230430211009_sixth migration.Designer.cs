@@ -12,8 +12,8 @@ using SalesWebMVC.Data;
 namespace SalesWebMVC.Migrations
 {
     [DbContext(typeof(SalesWebMVCContext))]
-    [Migration("20230428005724_Five Migration")]
-    partial class FiveMigration
+    [Migration("20230430211009_sixth migration")]
+    partial class sixthmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace SalesWebMVC.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SellerId")
+                    b.Property<int>("Seller_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -63,7 +63,7 @@ namespace SalesWebMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SellerId");
+                    b.HasIndex("Seller_Id");
 
                     b.ToTable("SalesRecords");
                 });
@@ -82,7 +82,7 @@ namespace SalesWebMVC.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int>("Department_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -95,16 +95,16 @@ namespace SalesWebMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("Department_Id");
 
-                    b.ToTable("Seller");
+                    b.ToTable("Sellers");
                 });
 
             modelBuilder.Entity("SalesWebMVC.Models.SalesRecord", b =>
                 {
                     b.HasOne("SalesWebMVC.Models.Seller", "Seller")
                         .WithMany("Sales")
-                        .HasForeignKey("SellerId")
+                        .HasForeignKey("Seller_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -115,7 +115,7 @@ namespace SalesWebMVC.Migrations
                 {
                     b.HasOne("SalesWebMVC.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId")
+                        .HasForeignKey("Department_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

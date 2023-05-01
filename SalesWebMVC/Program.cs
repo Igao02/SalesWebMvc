@@ -10,6 +10,7 @@ namespace SalesWebMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
             builder.Services.AddDbContext<SalesWebMVCContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMVCContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMVCContext' not found.")));
 
@@ -41,9 +42,6 @@ namespace SalesWebMVC
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
-
-            
-
         }
     }
 }

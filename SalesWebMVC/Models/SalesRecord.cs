@@ -1,5 +1,6 @@
 ﻿using SalesWebMVC.Models.Enums;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SalesWebMVC.Models
 {
@@ -9,7 +10,9 @@ namespace SalesWebMVC.Models
         public DateTime Date { get; set; }
         public double Amount { get; set; }
         public SalesStatus Status { get; set; }
+        [ForeignKey("Seller_Id")]
         public Seller Seller { get; set; }
+        public int Seller_Id { get; set; }
         //Associação de SalesRecord com Seller (*...1)
 
         //Criando o construtor sem argumentos

@@ -1,6 +1,7 @@
 ﻿using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace SalesWebMVC.Models
@@ -12,8 +13,10 @@ namespace SalesWebMVC.Models
         public String Email { get; set; }
         public DateTime BirthDate{ get; set; }
         public double BaseSalary { get; set; }
+        [ForeignKey("Department_Id")] 
         public Department Department { get; set; }
         //Realizado a implementação de Seller para Department (*...1)
+        public int Department_Id { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
         //Realizando a associação da classe Seler com Sales Record (1...*)
 
@@ -38,10 +41,12 @@ namespace SalesWebMVC.Models
         
         public void AddSales(SalesRecord sr)
         {
+            //Adicionando um novo SalesRecord
             Sales.Add(sr);
         }
         public void RemoveSales(SalesRecord sr)
         {
+            //Removendo um novo SalesRecord
             Sales.Remove(sr);
         }
 

@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+@media (max-width: 575.98px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+*/

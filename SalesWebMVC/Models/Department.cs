@@ -17,10 +17,11 @@ namespace SalesWebMVC.Models
 
 
         //Criando o construtor vázio
-        public Department()
+        public Department() 
         {
 
         }
+   
 
         //Criando o construtor com argumentos
         public Department(string name)
@@ -31,6 +32,7 @@ namespace SalesWebMVC.Models
 
         public void Add(Seller seller) 
         {
+            //Adicionando um novo vendedor
             Sellers.Add(seller);
         }
 

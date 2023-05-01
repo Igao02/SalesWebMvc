@@ -5,12 +5,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SalesWebMVC.Migrations
 {
-    public partial class SecondMigration : Migration
+    public partial class sixthmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Seller",
+                name: "Departments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sellers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -19,14 +32,14 @@ namespace SalesWebMVC.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BaseSalary = table.Column<double>(type: "float", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                    Department_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Seller", x => x.Id);
+                    table.PrimaryKey("PK_Sellers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Seller_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Sellers_Departments_Department_Id",
+                        column: x => x.Department_Id,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -41,28 +54,28 @@ namespace SalesWebMVC.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    SellerId = table.Column<int>(type: "int", nullable: false)
+                    Seller_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SalesRecords", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SalesRecords_Seller_SellerId",
-                        column: x => x.SellerId,
-                        principalTable: "Seller",
+                        name: "FK_SalesRecords_Sellers_Seller_Id",
+                        column: x => x.Seller_Id,
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SalesRecords_SellerId",
+                name: "IX_SalesRecords_Seller_Id",
                 table: "SalesRecords",
-                column: "SellerId");
+                column: "Seller_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Seller_DepartmentId",
-                table: "Seller",
-                column: "DepartmentId");
+                name: "IX_Sellers_Department_Id",
+                table: "Sellers",
+                column: "Department_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -71,7 +84,10 @@ namespace SalesWebMVC.Migrations
                 name: "SalesRecords");
 
             migrationBuilder.DropTable(
-                name: "Seller");
+                name: "Sellers");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
         }
     }
 }
