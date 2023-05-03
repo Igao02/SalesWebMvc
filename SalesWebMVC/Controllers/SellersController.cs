@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMVC.Models;
+using SalesWebMVC.Models.ViewsModels;
 using SalesWebMVC.Services;
 using System.Drawing.Text;
 
@@ -11,9 +12,13 @@ namespace SalesWebMVC.Controllers
         //Criando uma dependencia para o SellerService
         private readonly SellerService _sellerService;
 
-        public SellersController(SellerService sellerService)
+        //Criando uma dependencia para o DepartmentService
+        private readonly DepartmentService _departmentService;
+
+        public SellersController(SellerService sellerService, DepartmentService departmentService)
         {
             _sellerService = sellerService;
+            _departmentService = departmentService;
         }
 
         public IActionResult Index()
@@ -26,9 +31,11 @@ namespace SalesWebMVC.Controllers
 
         public IActionResult Create()
         {
-            //Criando a ação do botão create Sellers->Index
-            //Retornando o que está dentro de Sellers->Create
-            return View();
+            //Criando a ação do botão create Sellers->
+            //Criando a tela de formulário para cadastrar o vendedor
+            var departments = _departmentService.FindAll(); // A ação está retornando toda a lista de departamentos que tem no banco de dados.
+            var viewModel = new SellerFormViewModel { Departments= departments };
+            return View(viewModel);
         }
 
 

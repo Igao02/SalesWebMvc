@@ -15,9 +15,11 @@ namespace SalesWebMVC
                 options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMVCContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMVCContext' not found.")));
 
             // Add services to the container.
+            //Injeção de Dependencias.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<SellerService>();
+            builder.Services.AddScoped<DepartmentService>();
 
             var app = builder.Build();
 
