@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-﻿@model SalesWebMVC.Models.Seller
-=======
-﻿@model SalesWebMVC.Models.ViewsModels.SellerFormViewModel
->>>>>>> 396c89fbeab6f9a489320aba88ba872d948949c1
+
+@model SalesWebMVC.Models.Seller;
+@model SalesWebMVC.Models.ViewsModels.SellerFormViewModel;
+
 <!--Isso eu garanto que a minha view tem a disposição um objeto Seller -->
 
 @{
@@ -21,7 +20,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div class="form-group">
-<<<<<<< HEAD
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
             </div>
@@ -39,43 +37,41 @@
             <div class="form-group">
                 <label asp-for="BaseSalary" class="control-label"></label>
                 <input asp-for="BaseSalary" class="form-control" />
-=======
-                <label asp-for="Seller.Name" class="control-label"></label>
-                <input asp-for="Seller.Name" class="form-control" />
+
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="Seller.Email" class="control-label"></label>
-                <input asp-for="Seller.Email" class="form-control" />
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="Seller.BirthDate" class="control-label"></label>
-                <input asp-for="Seller.BirthDate" class="form-control" />
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="Seller.BaseSalary" class="control-label"></label>
-                <input asp-for="Seller.BaseSalary" class="form-control" />
+                <label asp-for="BaseSalary" class="control-label"></label>
+                <input asp-for="BaseSalary" class="form-control" />
             </div>
 
             <!--Montando a caixa de seleção abaixo-->
             <div class="form-group">
-                <label asp-for="Seller.Department_Id" class="control-label"></label>
-                <select asp-for="Seller.Department_Id" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-control"></select>
->>>>>>> 396c89fbeab6f9a489320aba88ba872d948949c1
+                <label asp-for="Department_Id" class="control-label"></label>
+                <select asp-for="Department_Id" asp-items="@(new SelectList("Id","Name"))" class="form-control"></select>
             </div>
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
-<<<<<<< HEAD
+
                 
             </div>
-=======
+
 
             </div>
 
->>>>>>> 396c89fbeab6f9a489320aba88ba872d948949c1
         </form>
     </div>
 
