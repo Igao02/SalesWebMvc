@@ -1,0 +1,7 @@
+Criar migration (Criei uma tabela nova, adicionei uma coluna na tabela): dotnet ef migrations add "First Migration" --project .\SalesWebMVC
+
+Para atualizar a Migration: dotnet ef database update --project .\SalesWebMVC
+
+dotnet ef migrations add "Second Migration"
+
+Add-Migration SalesWebMVC
