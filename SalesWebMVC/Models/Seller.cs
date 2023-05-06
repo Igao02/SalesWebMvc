@@ -17,6 +17,8 @@ namespace SalesWebMVC.Models
         public Department Department { get; set; }
         //Realizado a implementação de Seller para Department (*...1)
         public int Department_Id { get; set; }
+
+
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
         //Realizando a associação da classe Seler com Sales Record (1...*)
 

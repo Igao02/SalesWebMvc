@@ -12,8 +12,8 @@ using SalesWebMVC.Data;
 namespace SalesWebMVC.Migrations
 {
     [DbContext(typeof(SalesWebMVCContext))]
-    [Migration("20230430211009_sixth migration")]
-    partial class sixthmigration
+    [Migration("20230506012025_Migratioon")]
+    partial class Migratioon
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

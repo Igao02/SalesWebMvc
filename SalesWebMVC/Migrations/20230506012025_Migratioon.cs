@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SalesWebMVC.Migrations
 {
-    public partial class sixthmigration : Migration
+    public partial class Migratioon : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
