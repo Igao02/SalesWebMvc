@@ -13,7 +13,7 @@ namespace SalesWebMVC.Controllers
         private readonly SellerService _sellerService;
 
         //Criando uma dependencia para o DepartmentService
-        private readonly DepartmentService _departmentService;        
+        private readonly DepartmentService _departmentService;
 
         public SellersController(SellerService sellerService, DepartmentService departmentService)
         {
@@ -32,14 +32,10 @@ namespace SalesWebMVC.Controllers
         public IActionResult Create()
         {
 
-            //Criando a ação do botão create Sellers->Index
-            //Retornando o que está dentro de Sellers->Create
-            
-
             //Criando a ação do botão create Sellers->
             //Criando a tela de formulário para cadastrar o vendedor
             var departments = _departmentService.FindAll(); // A ação está retornando toda a lista de departamentos que tem no banco de dados.
-            var viewModel = new SellerFormViewModel { Departments= departments };
+            var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
         }
 
@@ -57,5 +53,31 @@ namespace SalesWebMVC.Controllers
             //Redirecionando a requisição para o Index, ação que mostrará novamente a tela principal do crude.
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }
