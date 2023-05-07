@@ -2,6 +2,7 @@
 using SalesWebMVC.Models;
 using System;
 using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Services.Exceptions;
 
 namespace SalesWebMVC.Services
 {
@@ -32,6 +33,7 @@ namespace SalesWebMVC.Services
 
         public Seller FindById(int id)
         {
+            //Realizando o Join das tabelas do Department e Seller, tem que adicionar o link entity framework core
             return _context.Sellers.Include(obj =>obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
@@ -40,6 +42,27 @@ namespace SalesWebMVC.Services
             var obj = _context.Sellers.Find(id);
             _context.Sellers.Remove(obj);
             _context.SaveChanges();
+        }
+
+
+        public void Update(Seller obj)
+        {
+            //este método verifica se um vendedor com o ID fornecido existe no contexto do banco de dados e, se existir, atualiza-o. Caso contrário, ele lança uma exceção.
+            if (!_context.Sellers.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id Not Found");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }   
+            
+            
         }
 
 

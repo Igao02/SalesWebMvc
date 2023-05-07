@@ -1,0 +1,58 @@
+﻿@model SalesWebMVC.Models.ViewsModels.SellerFormViewModel
+
+<!--Isso eu garanto que a minha view tem a disposição um objeto Seller -->
+@{
+    ViewData["Title"] = "Edit";
+}
+<!--Criando a nossa página de cadastro do Seller-->
+<h1>@ViewData["Title"]</h1>
+
+<h4 class="fw-bold">Seller</h4>
+<br />
+
+<div class="row">
+    <!--A classe acima é para que o div ocupe a largura da tela. Já a classe abaixo é para ocupar 1/3 da tela, pois o BootStrap
+        divide a tela em 12 partes.
+    -->
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.Id" />
+            <div class="form-group">
+                <label asp-for="Seller.Name" class="control-label"></label>
+                <input asp-for="Seller.Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Seller.Email" class="control-label"></label>
+                <input asp-for="Seller.Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Seller.BirthDate" class="control-label"></label>
+                <input asp-for="Seller.BirthDate" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Seller.BaseSalary" class="control-label"></label>
+                <input asp-for="Seller.BaseSalary" class="form-control" />
+            </div>
+
+            <!--Montando a caixa de seleção abaixo-->
+
+
+            <div class="form-gropu">
+                <label asp-for="Seller.Department_Id" class="control-label"></label>
+                <select asp-for="Seller.Department_Id" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-danger" />
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
