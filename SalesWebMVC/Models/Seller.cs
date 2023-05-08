@@ -34,9 +34,9 @@ namespace SalesWebMVC.Models
         public double BaseSalary { get; set; }
 
         [ForeignKey("Department_Id")] 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
         //Realizado a implementação de Seller para Department (*...1)
-        public int Department_Id { get; set; }
+        public int Department_Id  { get; set; }
 
 
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
