@@ -12,7 +12,7 @@ using SalesWebMVC.Data;
 namespace SalesWebMVC.Migrations
 {
     [DbContext(typeof(SalesWebMVCContext))]
-    [Migration("20230513192652_Second Seeding Migration")]
+    [Migration("20230513193932_Second Seeding Migration")]
     partial class SecondSeedingMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
