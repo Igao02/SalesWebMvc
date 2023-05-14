@@ -21,10 +21,6 @@ namespace SalesWebMVC.Controllers
             //Colocando uma mensagem na página Index.
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
